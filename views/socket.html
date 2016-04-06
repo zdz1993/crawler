@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Chat example</title>
+    <link rel="stylesheet" type="text/css" href="../css/socket.css">
+    <link rel="stylesheet" type="text/css" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/jquery.emoji.css" />
+   <!--  <audio style="margin:0 auto;width:990px;display: block;" controls="controls" autoplay="autoplay" loop="loop" preload="auto" src="../music/zx.mp3">
+        你的浏览器不支持audio标签
+    </audio> -->
+</head>
+
+<body>
+    <form id="form">
+        <div class="chat-left">
+            <div class="title">
+                <div class="who-title">昵称</div>
+            </div>
+            <div class="text"></div>
+            <div class="sub-container">
+                <div contenteditable="true" id="msg"></div>
+                <!-- <span id="btn" class="btn btn-sm btn-default">:)</span> -->
+                <img class="emoji_btn" id="btn" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZBAMAAAA2x5hQAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAkUExURUxpcfTGAPTGAPTGAPTGAPTGAPTGAPTGAPTGAPTGAPTGAPTGAOfx6yUAAAALdFJOUwAzbVQOoYrzwdwkAoU+0gAAAM1JREFUGNN9kK0PQWEUxl8fM24iCYopwi0muuVuzGyKwATFZpJIU01RUG/RBMnHxfz+Oef9uNM84d1+23nO+zxHKVG2WWupRJkdcAwtpCK0lpbqWE01pB0QayonREMoIp7AawQrWSgGGb4pn6dSeSh68FAVXqHqy3wKrkJiDGDTg3dnp//w+WnwlwIOJauF+C7sXRVfdha4O4oIJfTbtdSxs2uqhs585A0ko8iLTMEcDE1n65A+29pYAlr72nz9dKu7GuNTcsL2fDQzB/wCPVJ69nZGb3gAAAAASUVORK5CYII=" style="top: 610px; left: 20px;">
+                <input type="submit" value="发送" class="sub-button">
+            </div>
+        </div>
+        <div class="chat-right">
+            <div class="who-enter">
+                <div class="enter-title">在线详情</div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" src="../js/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/highlight.pack.js"></script>
+    <script type="text/javascript" src="../js/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.emoji.min.js"></script>
+    <script type="text/javascript" src="../js/fesocket.js"></script>
+</body>
+
+</html>
