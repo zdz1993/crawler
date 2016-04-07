@@ -6,11 +6,11 @@ var async = require('async');
 
 var mail = {
     from: {
-        "host": "reportmail.meilishuo.com",
+        "host": "*********",
         "port": 25,
         "auth": {
-            "user": "bizfe@mlsmsg.meilishuo.com",
-            "pass": "Bizfe123"
+            "user": "***********",
+            "pass": "***********"
         }
     },
     to: 'dezhizhang@meilishuo.com,756925889@qq.com'
