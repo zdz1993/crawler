@@ -6,19 +6,23 @@ var async = require('async');
 
 var mail = {
     from: {
-        "host": "reportmail.meilishuo.com",
+        "host": "******",
         "port": 25,
         "auth": {
-            "user": "bizfe@mlsmsg.meilishuo.com",
-            "pass": "Bizfe123"
+            "user": "*********",
+            "pass": "******"
         }
     },
-    to: 'dezhizhang@meilishuo.com'
+    to: '*********'
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 var url = "https://github.com/zenany/weekly/blob/master/software/2016";
 var data = "";
 var nowDate = new Date();
+var year = nowDate.getFullYear();
+var month = (nowDate.getMonth()+1) > 9 ? (nowDate.getMonth()+1) : '0' + (nowDate.getMonth()+1);
+var day = nowDate.getDate() > 9 ?  nowDate.getDate() : '0' + nowDate.getDate();
+var nowTimeString =  year + '-' + month + '-' + day;
 // 创建一个请求
 var req = request(url, function(error, res, body) {
     var $ = cheerio.load(body),
@@ -54,13 +58,15 @@ var req = request(url, function(error, res, body) {
 
     //找到需要抓取的url
     fileArray.forEach(function(item, index) {
-
-        var fileTime = new Date(item.time);
+        var time = item.time;
+        var timeString = '2016-' + time.substring(0,2) + '-' + time.substring(2,4);
+        var fileTime = new Date(timeString).getTime();
+        var nowDateObj = new Date(nowTimeString).getTime();
 
         // console.log(fileTime, nowDate, fileTime < nowDate);
         //通过时间判断是不是最新的文章
-        console.log(fileTime, nowDate, fileTime < nowDate);
-        if (fileTime > nowDate || fileTime == nowDate) {
+        console.log(fileTime, nowDateObj, fileTime == nowDateObj);
+        if (fileTime > nowDateObj || fileTime == nowDateObj) {
 
             //获取这个需要抓取的对象
             var ele = item.item;
@@ -89,7 +95,7 @@ var req = request(url, function(error, res, body) {
         request(url, function(error, res, body) {
             var $ = cheerio.load(body),
                 html = $('.entry-content').html();
-                //定义邮件内容
+            //定义邮件内容
             oneArticle = {
                 title: '百度FEX',
                 content: '--- \r\n' +
