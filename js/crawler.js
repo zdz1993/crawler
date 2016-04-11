@@ -13,7 +13,7 @@ var mail = {
             "pass": "Bizfe123"
         }
     },
-    to: 'dezhizhang@meilishuo.com,756925889@qq.com'
+    to: 'dezhizhang@meilishuo.com'
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 var url = "https://github.com/zenany/weekly/blob/master/software/2016";
