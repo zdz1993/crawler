@@ -6,14 +6,14 @@ var async = require('async');
 
 var mail = {
     from: {
-        "host": "******",
+        "host": "reportmail.meilishuo.com",
         "port": 25,
         "auth": {
-            "user": "*********",
-            "pass": "******"
+            "user": "bizfe@mlsmsg.meilishuo.com",
+            "pass": "Bizfe123"
         }
     },
-    to: '*********'
+    to: 'dezhizhang@meilishuo.com,fe-biz@meilishuo.com'
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 var url = "https://github.com/zenany/weekly/blob/master/software/2016";
