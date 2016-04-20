@@ -22,12 +22,9 @@ var mail = {
             "pass": ""
         }
     },
-<<<<<<< HEAD
     to: ''
-=======
-    to: 'dezhizhang@meilishuo.com'
 
->>>>>>> 6a8b605eb9ae28d7154df6827ffe69f6fd7664d3
+
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 
