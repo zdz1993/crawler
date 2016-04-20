@@ -15,14 +15,14 @@ var fileArray = new function () { return require(cachePath).fex };
 //配置邮件服务信息
 var mail = {
     from: {
-        "host": "reportmail.meilishuo.com",
+        "host": "",
         "port": 25,
         "auth": {
-            "user": "bizfe@mlsmsg.meilishuo.com",
-            "pass": "Bizfe123"
+            "user": "",
+            "pass": ""
         }
     },
-    to: 'dezhizhang@meilishuo.com'
+    to: ''
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 
