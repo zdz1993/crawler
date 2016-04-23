@@ -1,162 +1,216 @@
 var cheerio = require("cheerio"),
     request = require("request"),
     nodemailer = require("nodemailer"),
+    async = require("async"),
     fs = require("fs"),
-    path = require("path"),
-    url = "https://github.com/zenany/weekly/blob/master/software/2016";
+    urlModel = require("url"),
+    path = require("path");
 
 //存储文件名字得文件名称
-var cacheName = "fex.json",
+var cacheName = "config.json",
     cachePath = path.resolve("../" + cacheName);
 
-//读取曾经都发送过那些文章
-var fileArray = new function () { return require(cachePath).fex };
+//获取配置文件
+var config = new function() {
+    return require(cachePath)
+};
 
 //配置邮件服务信息
 var mail = {
     from: {
-        "host": "",
+        "host": "reportmail.meilishuo.com",
         "port": 25,
         "auth": {
-            "user": "",
-            "pass": ""
+            "user": "bizfe@mlsmsg.meilishuo.com",
+            "pass": "Bizfe123"
         }
     },
-    to: ''
-
-
+    to: 'zhangdezhi@qufenqi.com'
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 
-// var data = "";
-// var nowDate = new Date();
-// var year = nowDate.getFullYear();
-// var month = (nowDate.getMonth()+1) > 9 ? (nowDate.getMonth()+1) : '0' + (nowDate.getMonth()+1);
-// var day = nowDate.getDate() > 9 ?  nowDate.getDate() : '0' + nowDate.getDate();
-// var nowTimeString =  year + '-' + month + '-' + day;
-// 创建一个请求
-var req = request(url, function (error, res, body) {
-    var $ = cheerio.load(body),
-        filesList = $('table.files .content a');
+//查询都要抓取哪些网站的信息
+for (key in config) {
+    if (typeof key != "string") {
+        break;
+    }
 
-    //文件标题的列表
-    var fileTitleArray = [];
+    //获取文章的额标题对象
+    async.waterfall([
+            function(callback) {
+                // 重新赋值
+                var newKey = key;
 
-    //获取每个列表的标题，时间
-    filesList.each(function (index, item) {
+                //获取实例对象
+                var _this = config[newKey];
 
-        //获取标题
-        var title = item.attribs.title;
+                //获取每个页面的url
+                var pageurl = _this.url;
 
-        //将对象存到数组
-        fileTitleArray.push(item);
-    })
+                //文章标题的html文本节点
+                var titleElementNode = _this.titleElementNode;
 
-    //需要抓取文章的列表
-    var articleUrlList = [];
+                //文章内容的节点
+                var contentElementNode = _this.contentElementNode;
 
-    //存到文章列表
-    articleUrlList = unq(fileTitleArray, fileArray)
+                //读过的文章列表
+                var oldArticalList = _this.articalList;
 
-    articleUrlList.forEach(function (item, index) {
+                request(pageurl, function(error, res, body) {
 
-        //需要抓取内容的链接
-        var url = "https://github.com" + item.attribs.href;
-        var oneArticle;
+                    var $ = cheerio.load(body),
+                        filesTitleList = $(titleElementNode);
 
-        //发送请求获取内容
-        request(url, function (error, res, body) {
+                    var articleUrlList;
 
-            var $ = cheerio.load(body),
-                html = $('.entry-content').html();
+                    //文件标题的列表
+                    var articalList = [];
 
-            //定义邮件内容
-            oneArticle = {
-                title: '百度FEX',
-                content: '--- \r\n' +
-                'title: 百度FEX' + '\r\n' +
-                'date: ' + new Date() + '\r\n' +
-                'categories: FEX-Weekly' + '\r\n' +
-                'tags: [FEX]' + '\r\n' +
-                '---\r\n \r\n' + html
+                    //获取每个列表的标题
+                    filesTitleList.each(function(index, item) {
+
+                        //获取标题
+                        var title = item.children[0].data;
+
+                        //将对象存到数组
+                        articalList.push(item);
+                    })
+
+                    //存到文章列表
+                    articleUrlList = unq(articalList, oldArticalList);
+
+                    //传给下一个函数的值
+                    var nextValue = {
+                        articleUrlList: articleUrlList,
+                        pageurl: pageurl,
+                        titleElementNode: titleElementNode,
+                        contentElementNode: contentElementNode,
+                        oldArticalList: oldArticalList,
+                        _this: _this,
+                        newKey: newKey
+                    }
+
+                    //传值给下一个函数
+                    callback(null, nextValue)
+
+                })
             }
+        ],
+        function(err, results) {
 
-            //发送技术邮件
-            sendMail('技术邮件', oneArticle);
-           
-            //重新拼接fex.json的内容
-            fileArray.push(item.attribs.title);
-            
-            var fexJson = {
-                fex: fileArray
-            }
-             console.log(fileArray,fexJson);
-            //将新的邮件写入缓存
-            fs.writeFile(cachePath, JSON.stringify(fexJson), function (err) {
+            var articleUrlList = results.articleUrlList;
 
-                console.log(err);
+            //最新的文章列表
+            articleUrlList.forEach(function(item, index) {
 
-            });
+                //需要抓取内容的链接
+                var contentUrl = completionLink(item.attribs.href, results.pageurl);
 
+                //发送请求获取内容
+                request(contentUrl, function(error, res, body) {
+                    var oneArticle;
+                    var $ = cheerio.load(body);
+                    var html = $(results.contentElementNode).html();
+
+                    //定义邮件内容
+                    oneArticle = {
+                        title: item.children[0].data,
+                        content: '--- \r\n' +
+                            'title: '+item.children[0].data + '\r\n' +
+                            'date: ' + new Date() + '\r\n' +
+                            '---\r\n \r\n' + html
+                    }
+
+                    //发送技术邮件
+                    sendMail('技术邮件', oneArticle);
+
+                    //重新拼接config.json的内容
+                    results.oldArticalList.push(item.children[0].data);
+
+                    config[results.newKey] = results._this;
+
+                    //将新的邮件写入缓存
+                    fs.writeFile(cachePath, JSON.stringify(config), function(err) {
+
+                        if (err) {
+                            console.log(err);
+                        }
+                    });
+                })
+            })
         })
+}
 
-
-
-    })
-
-    /**
-     * @param {String} subject：发送的主题
-     * @param {String} html：发送的 html 内容
-     */
-    function sendMail(subject, html) {
-        var mailOptions = {
-            from: 'zdz1993<zdz1993@126.com>',
-            to: mail.to,
-            subject: subject,
-            html: html
-        };
-
-        smtpTransport.sendMail(mailOptions, function (error, response) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(response);
-            }
-            smtpTransport.close();
-        });
+/**
+ * @param {String} subject：发送的主题
+ * @param {String} html：发送的 html 内容
+ */
+function sendMail(subject, html) {
+    var mailOptions = {
+        from: 'zdz1993<zdz1993@126.com>',
+        to: mail.to,
+        subject: subject,
+        html: html
     };
 
-    /**
-     * 去除两个数组重复的值
-     * @param {String} subject：发送的主题
-     * @param {String} html：发送的 html 内容
-     */
-    function unq(arr1, arr2) {
+    smtpTransport.sendMail(mailOptions, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            // console.log(response);
+        }
+        smtpTransport.close();
+    });
+};
 
-        //临时数组1
-        var temp = [];
+/**
+ * 去除两个数组重复的值
+ * @param {String} subject：发送的主题
+ * @param {String} html：发送的 html 内容
+ */
+function unq(arr1, arr2) {
 
-        //临时数组2 
-        var temparray = [];
+    //临时数组1
+    var temp = [];
 
-        for (var i = 0; i < arr2.length; i++) {
+    //临时数组2 
+    var temparray = [];
 
-            //巧妙地方：把数组B的值当成临时数组1的键并赋值为真  
-            temp[arr2[i]] = true;
+    for (var i = 0; i < arr2.length; i++) {
+
+        //巧妙地方：把数组B的值当成临时数组1的键并赋值为真  
+        temp[arr2[i]] = true;
+    };
+
+    for (var i = 0; i < arr1.length; i++) {
+
+        if (!temp[arr1[i].children[0].data]) {
+
+            //巧妙地方：同时把数组A的值当成临时数组1的键并判断是否为真，如果不为真说明没重复，就合并到一个新数组里，这样就可以得到一个全新并无重复的数组  
+            temparray.push(arr1[i]);
+
         };
 
-        for (var i = 0; i < arr1.length; i++) {
+    };
 
-            if (!temp[arr1[i].attribs.title]) {
+    return temparray;
 
-                //巧妙地方：同时把数组A的值当成临时数组1的键并判断是否为真，如果不为真说明没重复，就合并到一个新数组里，这样就可以得到一个全新并无重复的数组  
-                temparray.push(arr1[i]);
+}
 
-            };
+/**
+ * 补全链接地址
+ * @param {String} url：发送的主题
+ */
 
-        };
-
-        return temparray;
-
+function completionLink(url, objectUrl) {
+    var oldUrl = urlModel.parse(url)
+    var urlParse = urlModel.parse(objectUrl);
+    var protocol = urlParse.protocol;
+    var host = urlParse.host;
+    var newUrl = url;
+    if (!oldUrl.protocol) {
+        newUrl = protocol + "//" + host + url;
     }
-});
+    return newUrl;
+
+}
