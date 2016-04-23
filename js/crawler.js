@@ -25,7 +25,7 @@ var mail = {
             "pass": "Bizfe123"
         }
     },
-    to: 'zhangdezhi@qufenqi.com'
+    to: 'zhangdezhi@qufenqi.com,fe@qufenqi.com'
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 
