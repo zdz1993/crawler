@@ -18,20 +18,14 @@ var config = new function() {
 //配置邮件服务信息
 var mail = {
     from: {
-        "host": "reportmail.meilishuo.com",
+        "host": "************",
         "port": 25,
         "auth": {
-            "user": "bizfe@mlsmsg.meilishuo.com",
-            "pass": "Bizfe123"
+            "user": "************",
+            "pass": "***********"
         }
     },
-<<<<<<< HEAD
-    to: 'zhangdezhi@qufenqi.com'
-=======
-
-    to: '***************'
-
->>>>>>> b63ce8da8832cdf7d5ca8ecccc6d13beb33c1e0a
+    to: '**************'
 }
 var smtpTransport = nodemailer.createTransport(mail.from);
 
