@@ -1,1 +1,32 @@
-{"fex":{"url":"https://github.com/zenany/weekly/blob/master/software/2016","contentElementNode":".entry-content","titleElementNode":"table.files .content a","articalList":["0104.md","0111.md","0118.md","0125.md","0201.md","0208.md","0215.md","0222.md","0229.md","0307.md","0314.md","0321.md","0328.md","0404.md","0411.md","excellent.md","0418.md"]},"taobaofed":{"url":"http://taobaofed.org/","contentElementNode":"article","titleElementNode":".article-summary .article-summary-inner .article-title a","articalList":["H5页面快速搭建之高级字体应用实践","如何定位 Node.js 的内存泄漏","企业级 Node.js Web 应用解决方案设计的零零总总","淘宝首页性能优化实践","「开往春天的 Node.js」 - Node 地下铁第二期线下沙龙总结","页面跳转时，统计数据丢失问题探讨","一个前端的自我修养","从 left-pad 事件我们可以学到什么","新版卖家中心 Bigpipe 实践（二）","淘宝前端国际化方案探索"]}}
+{
+	"fex": {
+		"url": "https://github.com/zenany/weekly/blob/master/software/2016/",
+		"contentElementNode": ".entry-content",
+		"titleElementNode": "table.files .content a",
+		"articalList": ["0111.md", "0118.md", "0125.md", "0201.md", "0208.md", "0215.md", "0222.md", "0229.md", "0307.md", "0314.md", "0321.md", "0328.md", "0404.md", "0411.md", "excellent.md", "0418.md", "0104.md"]
+	},
+	"taobaofed": {
+		"url": "http://taobaofed.org/",
+		"contentElementNode": "article",
+		"titleElementNode": ".article-summary .article-summary-inner .article-title a",
+		"articalList": ["H5页面快速搭建之高级字体应用实践", "如何定位 Node.js 的内存泄漏", "企业级 Node.js Web 应用解决方案设计的零零总总", "淘宝首页性能优化实践", "「开往春天的 Node.js」 - Node 地下铁第二期线下沙龙总结", "页面跳转时，统计数据丢失问题探讨", "一个前端的自我修养", "从 left-pad 事件我们可以学到什么", "新版卖家中心 Bigpipe 实践（二）", "淘宝前端国际化方案探索"]
+	},
+	"feEnd": {
+		"url": "http://www.css88.com/",
+		"contentElementNode": "article",
+		"titleElementNode": "article .entry-header .entry-title a",
+		"articalList": []
+	},
+	"zhangxinxu": {
+		"url": "http://www.zhangxinxu.com/wordpress/",
+		"contentElementNode": ".the_main .content",
+		"titleElementNode": ".content .post h2 a",
+		"articalList": []
+	},
+	"w3cplus":{
+		"url":"http://www.w3cplus.com/",
+		"contentElementNode": ".the_main .content",
+		"titleElementNode": ".content h1  a",
+		"articalList": []
+	}
+}
