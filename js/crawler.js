@@ -4,7 +4,8 @@ var cheerio = require("cheerio"),
     async = require("async"),
     fs = require("fs"),
     urlModel = require("url"),
-    path = require("path");
+    path = require("path"),
+    http = require("http");
 
 //存储文件名字得文件名称
 var cacheName = "config.json",
@@ -16,21 +17,11 @@ var config = new function() {
 };
 
 //配置邮件服务信息
-var mail = {
-    from: {
-        "host": "************",
-        "port": 25,
-        "auth": {
-            "user": "************",
-            "pass": "***********"
-        }
-    },
-    to: '**************'
-}
+var mail = config.mailoption;
 var smtpTransport = nodemailer.createTransport(mail.from);
 
 //查询都要抓取哪些网站的信息
-for (key in config) {
+for (key in config.article) {
     if (typeof key != "string") {
         break;
     }
@@ -42,7 +33,7 @@ for (key in config) {
                 var newKey = key;
 
                 //获取实例对象
-                var _this = config[newKey];
+                var _this = config.article[newKey];
 
                 //获取每个页面的url
                 var pageurl = _this.url;
@@ -115,10 +106,7 @@ for (key in config) {
                     //定义邮件内容
                     oneArticle = {
                         title: item.children[0].data,
-                        content: '--- \r\n' +
-                            'title: '+item.children[0].data + '\r\n' +
-                            'date: ' + new Date() + '\r\n' +
-                            '---\r\n \r\n' + html
+                        content: html
                     }
 
                     //发送技术邮件
@@ -127,7 +115,7 @@ for (key in config) {
                     //重新拼接config.json的内容
                     results.oldArticalList.push(item.children[0].data);
 
-                    config[results.newKey] = results._this;
+                    config.article[results.newKey] = results._this;
 
                     //将新的邮件写入缓存
                     fs.writeFile(cachePath, JSON.stringify(config), function(err) {
@@ -147,7 +135,7 @@ for (key in config) {
  */
 function sendMail(subject, html) {
     var mailOptions = {
-        from: 'zdz1993<zdz1993@126.com>',
+        from: 'FE_文章章推荐',
         to: mail.to,
         subject: subject,
         html: html
@@ -157,7 +145,7 @@ function sendMail(subject, html) {
         if (error) {
             console.log(error);
         } else {
-            // console.log(response);
+            console.log(response);
         }
         smtpTransport.close();
     });
