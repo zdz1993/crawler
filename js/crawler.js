@@ -135,7 +135,7 @@ for (key in config.article) {
  */
 function sendMail(subject, html) {
     var mailOptions = {
-        from: 'FE_文章章推荐',
+        from: 'FE_文章推荐<zdz1993@126.com>',
         to: mail.to,
         subject: subject,
         html: html
@@ -143,7 +143,7 @@ function sendMail(subject, html) {
 
     smtpTransport.sendMail(mailOptions, function(error, response) {
         if (error) {
-            console.log(error);
+            console.log("error:"+error);
         } else {
             console.log(response);
         }
