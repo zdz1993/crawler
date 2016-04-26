@@ -1,14 +1,14 @@
 {
 	"mailoption": {
 		"from": {
-			"host": "****************",
+			"host": "reportmail.meilishuo.com",
 			"port": 25,
 			"auth": {
-				"user": "**************",
-				"pass": "*************"
+				"user": "bizfe@mlsmsg.meilishuo.com",
+				"pass": "Bizfe123"
 			}
 		},
-		"to": "********************"
+		"to": "zhangdezhi@qufenqi.com"
 	},
 	"article": {
 		"fex": {
