@@ -110,7 +110,7 @@ for (key in config.article) {
                     }
 
                     //发送技术邮件
-                    sendMail('技术邮件', oneArticle);
+                    sendMail('FE_文章推荐', oneArticle);
 
                     //重新拼接config.json的内容
                     results.oldArticalList.push(item.children[0].data);
@@ -135,7 +135,7 @@ for (key in config.article) {
  */
 function sendMail(subject, html) {
     var mailOptions = {
-        from: 'FE_文章推荐<zdz1993@126.com>',
+        from: '趣分期前端<zdz1993@126.com>',
         to: mail.to,
         subject: subject,
         html: html
