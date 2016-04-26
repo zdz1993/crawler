@@ -1,45 +1,114 @@
 {
-	"mailoption": {
-		"from": {
-			"host": "******************",
-			"port": 25,
-			"auth": {
-				"user": "******************",
-				"pass": "******************"
-			}
-		},
-		"to": "******************"
-	},
-	"article": {
-		"fex": {
-			"url": "https://github.com/zenany/weekly/blob/master/software/2016/",
-			"contentElementNode": ".entry-content",
-			"titleElementNode": "table.files .content a",
-			"articalList": ["0118.md", "0125.md", "0201.md", "0208.md", "0215.md", "0222.md", "0229.md", "0307.md", "0314.md", "0321.md", "0328.md", "0404.md", "0411.md", "excellent.md", "0418.md", "0104.md", "0425.md", "0111.md"]
-		},
-		"taobaofed": {
-			"url": "http://taobaofed.org/",
-			"contentElementNode": "article",
-			"titleElementNode": ".article-summary .article-summary-inner .article-title a",
-			"articalList": ["H5页面快速搭建之高级字体应用实践", "如何定位 Node.js 的内存泄漏", "企业级 Node.js Web 应用解决方案设计的零零总总", "淘宝首页性能优化实践", "「开往春天的 Node.js」 - Node 地下铁第二期线下沙龙总结", "页面跳转时，统计数据丢失问题探讨", "一个前端的自我修养", "从 left-pad 事件我们可以学到什么", "新版卖家中心 Bigpipe 实践（二）", "淘宝前端国际化方案探索", "无线性能优化：Composite", "H5 页面高级字体应用实践"]
-		},
-		"feEnd": {
-			"url": "http://www.css88.com/",
-			"contentElementNode": "article",
-			"titleElementNode": "article .entry-header .entry-title a",
-			"articalList": ["用 Chrome 调试 Android 下的页面", "一张图帮你看懂 iPhone 的屏幕分辨率", "2016年度 JavaScript 展望（下）", "2016年度 JavaScript 展望（上） ", "微信浏览器中播放声音的正确姿势及html5中的audio标签", "three.js实现的波浪效果", "说说移动前端中 viewport （视口）", "用 Safari 调试 iOS 下页面", "在Webstorm中使用Autoprefixer", "css3 loading（SVG loading）动画集合"]
-		},
-		"zhangxinxu": {
-			"url": "http://www.zhangxinxu.com/wordpress/",
-			"contentElementNode": ".the_main #content",
-			"titleElementNode": "#content .post h2 a",
-			"articalList": ["以20像素为基准的CSS网页布局实践分享", "CSS font关键字属性值的简单研究", "CSS direction属性简介与实际应用", "CSS镂空图片transition过渡初加载背景色块问题解决", "基于原生HTML的UI组件开发", "SVG精简压缩工具svgo简介和初体验", "HTML textarea cols,rows属性和宽度高度关系研究", "前端早读课专访", "腾讯微云黑色遮罩引导蒙版更好的CSS实现方式", "简单了解CSS3的all属性", "了解HTML/HTML5中的download属性"]
-		},
-		"w3cplus": {
-			"url": "http://www.w3cplus.com/",
-			"contentElementNode": "＃page .page-inner",
-			"titleElementNode": ".content h1  a",
-			"articalList": ["HTML5语义化", "现代网页设计必不可少的CSS3功能", " figure 和 figcaption 元素的正确使用方式", "JavaScript中的随机数", "开始使用React和JSX", "HTML head里的元素", " CSS如何实现弹簧动画效果", "Sass中的数据类型", "函数表达式和函数声明", "JavaScript中的CSS: CSSX", "使用 stylelint检查CSS", "JavaScript学习笔记：字符串反转"]
-		}
-	}
+    "mailoption": {
+        "from": {
+            "driver": "smtp",
+            "host": "smtp.exmail.qq.com",
+            "port": 465,
+            "auth": {
+                "user": "sys_warning@qufenqi.com",
+                "pass": "gNLOu5uiot1nk+"
+            }
+        },
+        "to": "xiongweilie@qufenqi.com,zhangdezhi@qufenqi.com"
+    },
+    "article": {
+        "fex": {
+            "url": "https://github.com/zenany/weekly/blob/master/software/2016/",
+            "contentElementNode": ".entry-content",
+            "titleElementNode": "table.files .content a",
+            "articalList": [
+                "0125.md",
+                "0201.md",
+                "0208.md",
+                "0215.md",
+                "0222.md",
+                "0229.md",
+                "0307.md",
+                "0314.md",
+                "0321.md",
+                "0328.md",
+                "0404.md",
+                "0411.md",
+                "excellent.md",
+                "0418.md",
+                "0104.md",
+                "0425.md",
+                "0111.md",
+                "0118.md"
+            ]
+        },
+        "taobaofed": {
+            "url": "http://taobaofed.org/",
+            "contentElementNode": "article",
+            "titleElementNode": ".article-summary .article-summary-inner .article-title a",
+            "articalList": [
+                "H5页面快速搭建之高级字体应用实践",
+                "如何定位 Node.js 的内存泄漏",
+                "企业级 Node.js Web 应用解决方案设计的零零总总",
+                "淘宝首页性能优化实践",
+                "「开往春天的 Node.js」 - Node 地下铁第二期线下沙龙总结",
+                "页面跳转时，统计数据丢失问题探讨",
+                "一个前端的自我修养",
+                "从 left-pad 事件我们可以学到什么",
+                "新版卖家中心 Bigpipe 实践（二）",
+                "淘宝前端国际化方案探索",
+                "无线性能优化：Composite",
+                "H5 页面高级字体应用实践"
+            ]
+        },
+        "feEnd": {
+            "url": "http://www.css88.com/",
+            "contentElementNode": "article",
+            "titleElementNode": "article .entry-header .entry-title a",
+            "articalList": [
+                "用 Chrome 调试 Android 下的页面",
+                "一张图帮你看懂 iPhone 的屏幕分辨率",
+                "2016年度 JavaScript 展望（下）",
+                "2016年度 JavaScript 展望（上） ",
+                "微信浏览器中播放声音的正确姿势及html5中的audio标签",
+                "three.js实现的波浪效果",
+                "说说移动前端中 viewport （视口）",
+                "用 Safari 调试 iOS 下页面",
+                "在Webstorm中使用Autoprefixer",
+                "css3 loading（SVG loading）动画集合"
+            ]
+        },
+        "zhangxinxu": {
+            "url": "http://www.zhangxinxu.com/wordpress/",
+            "contentElementNode": ".the_main #content",
+            "titleElementNode": "#content .post h2 a",
+            "articalList": [
+                "以20像素为基准的CSS网页布局实践分享",
+                "CSS font关键字属性值的简单研究",
+                "CSS direction属性简介与实际应用",
+                "CSS镂空图片transition过渡初加载背景色块问题解决",
+                "基于原生HTML的UI组件开发",
+                "SVG精简压缩工具svgo简介和初体验",
+                "HTML textarea cols,rows属性和宽度高度关系研究",
+                "前端早读课专访",
+                "腾讯微云黑色遮罩引导蒙版更好的CSS实现方式",
+                "简单了解CSS3的all属性",
+                "了解HTML/HTML5中的download属性"
+            ]
+        },
+        "w3cplus": {
+            "url": "http://www.w3cplus.com/",
+            "contentElementNode": "＃page .page-inner",
+            "titleElementNode": ".content h1  a",
+            "articalList": [
+                "HTML5语义化",
+                "现代网页设计必不可少的CSS3功能",
+                " figure 和 figcaption 元素的正确使用方式",
+                "JavaScript中的随机数",
+                "开始使用React和JSX",
+                "HTML head里的元素",
+                " CSS如何实现弹簧动画效果",
+                "Sass中的数据类型",
+                "函数表达式和函数声明",
+                "JavaScript中的CSS: CSSX",
+                "使用 stylelint检查CSS",
+                "JavaScript学习笔记：字符串反转"
+            ]
+        }
+    }
 }

@@ -103,6 +103,11 @@ for (key in config.article) {
                     var $ = cheerio.load(body);
                     var html = $(results.contentElementNode).html();
 
+                    // 添加标志
+                    html = html.replace("<p>-- THE END --</p>","");
+                    html += "<p>——————————————————————————————————————————————————</p>"+
+                            "<p>该技术周报由<a href='https://github.com/zdz1993/crawler'>crawler</a>强力驱动</p>";
+
                     //定义邮件内容
                     oneArticle = {
                         title: item.children[0].data,
@@ -118,7 +123,7 @@ for (key in config.article) {
                     config.article[results.newKey] = results._this;
 
                     //将新的邮件写入缓存
-                    fs.writeFile(cachePath, JSON.stringify(config), function(err) {
+                    fs.writeFile(cachePath, JSON.stringify(config,null,'    '), function(err) {
 
                         if (err) {
                             console.log(err);
@@ -135,7 +140,7 @@ for (key in config.article) {
  */
 function sendMail(subject, html) {
     var mailOptions = {
-        from: '趣分期前端组<zdz1993@126.com>',
+        from: '趣分期前端组<sys_warning@qufenqi.com>',
         to: mail.to,
         subject: subject,
         html: html
