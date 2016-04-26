@@ -15,7 +15,7 @@
 			"url": "https://github.com/zenany/weekly/blob/master/software/2016/",
 			"contentElementNode": ".entry-content",
 			"titleElementNode": "table.files .content a",
-			"articalList": ["0111.md", "0118.md", "0125.md", "0201.md", "0208.md", "0215.md", "0222.md", "0229.md", "0307.md", "0314.md", "0321.md", "0328.md", "0404.md", "0411.md", "excellent.md", "0418.md", "0104.md", "0425.md"]
+			"articalList": ["0118.md", "0125.md", "0201.md", "0208.md", "0215.md", "0222.md", "0229.md", "0307.md", "0314.md", "0321.md", "0328.md", "0404.md", "0411.md", "excellent.md", "0418.md", "0104.md", "0425.md", "0111.md"]
 		},
 		"taobaofed": {
 			"url": "http://taobaofed.org/",
@@ -39,7 +39,7 @@
 			"url": "http://www.w3cplus.com/",
 			"contentElementNode": "＃page .page-inner",
 			"titleElementNode": ".content h1  a",
-			"articalList": ["HTML5语义化", "现代网页设计必不可少的CSS3功能", " figure 和 figcaption 元素的正确使用方式", "JavaScript中的随机数", "开始使用React和JSX", "HTML head里的元素", " CSS如何实现弹簧动画效果", "Sass中的数据类型", "函数表达式和函数声明", "JavaScript中的CSS: CSSX"]
+			"articalList": ["HTML5语义化", "现代网页设计必不可少的CSS3功能", " figure 和 figcaption 元素的正确使用方式", "JavaScript中的随机数", "开始使用React和JSX", "HTML head里的元素", " CSS如何实现弹簧动画效果", "Sass中的数据类型", "函数表达式和函数声明", "JavaScript中的CSS: CSSX", "使用 stylelint检查CSS", "JavaScript学习笔记：字符串反转"]
 		}
 	}
 }

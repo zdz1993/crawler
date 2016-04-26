@@ -135,7 +135,7 @@ for (key in config.article) {
  */
 function sendMail(subject, html) {
     var mailOptions = {
-        from: '趣分期前端<zdz1993@126.com>',
+        from: '趣分期前端组<zdz1993@126.com>',
         to: mail.to,
         subject: subject,
         html: html
