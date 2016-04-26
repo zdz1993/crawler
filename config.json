@@ -1,14 +1,14 @@
 {
 	"mailoption": {
 		"from": {
-			"host": "****************",
+			"host": "reportmail.meilishuo.com",
 			"port": 25,
 			"auth": {
-				"user": "*********",
-				"pass": "*********"
+				"user": "bizfe@mlsmsg.meilishuo.com",
+				"pass": "Bizfe123"
 			}
 		},
-		"to": "****************"
+		"to": "zhangdezhi@qufenqi.com"
 	},
 	"article": {
 		"fex": {
@@ -37,7 +37,7 @@
 		},
 		"w3cplus": {
 			"url": "http://www.w3cplus.com/",
-			"contentElementNode": ".the_main .content",
+			"contentElementNode": "＃page .page-inner",
 			"titleElementNode": ".content h1  a",
 			"articalList": ["HTML5语义化", "现代网页设计必不可少的CSS3功能", " figure 和 figcaption 元素的正确使用方式", "JavaScript中的随机数", "开始使用React和JSX", "HTML head里的元素", " CSS如何实现弹簧动画效果", "Sass中的数据类型", "函数表达式和函数声明", "JavaScript中的CSS: CSSX"]
 		}
