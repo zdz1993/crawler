@@ -1,15 +1,15 @@
 {
     "mailoption": {
         "from": {
-            "driver": "smtp",
-            "host": "smtp.exmail.qq.com",
+            "driver": "*********",
+            "host": "***********",
             "port": 465,
             "auth": {
-                "user": "sys_warning@qufenqi.com",
-                "pass": "gNLOu5uiot1nk+"
+                "user": "************",
+                "pass": "************"
             }
         },
-        "to": "zhangdezhi@qufenqi.com"
+        "to": "****************"
     },
     "article": {
         "fex": {
