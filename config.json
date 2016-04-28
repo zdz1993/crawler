@@ -1,15 +1,15 @@
 {
     "mailoption": {
         "from": {
-            "driver": "********",
-            "host": "********",
+            "driver": "smtp",
+            "host": "smtp.exmail.qq.com",
             "port": 465,
             "auth": {
-                "user": "********",
-                "pass": "********"
+                "user": "sys_warning@qufenqi.com",
+                "pass": "gNLOu5uiot1nk+"
             }
         },
-        "to": "********"
+        "to": "zhangdezhi@qufenqi.com"
     },
     "article": {
         "fex": {
@@ -88,7 +88,8 @@
                 "前端早读课专访",
                 "腾讯微云黑色遮罩引导蒙版更好的CSS实现方式",
                 "简单了解CSS3的all属性",
-                "了解HTML/HTML5中的download属性"
+                "了解HTML/HTML5中的download属性",
+                "改变CSS世界纵横规则的writing-mode属性"
             ]
         },
         "w3cplus": {

@@ -103,10 +103,17 @@ for (key in config.article) {
                     var $ = cheerio.load(body);
                     var html = $(results.contentElementNode).html();
 
+                    //如果有的文章中没有src属性要自行替换
+                    if ($("img")) {
+                        $("img").each(function(index, imgItem) {
+                             html = html.replace("data-src","src");
+                        })
+                    }
+
                     // 添加标志
-                    html = html.replace("<p>-- THE END --</p>","");
-                    html += "<p>——————————————————————————————————————————————————</p>"+
-                            "<p>该技术周报由<a href='https://github.com/zdz1993/crawler'>crawler</a>强力驱动</p>";
+                    html = html.replace("<p>-- THE END --</p>", "");
+                    html += "<p>——————————————————————————————————————————————————</p>" +
+                        "<p>该技术周报由<a href='https://github.com/zdz1993/crawler'>crawler</a>强力驱动</p>";
 
                     //定义邮件内容
                     oneArticle = {
@@ -123,7 +130,7 @@ for (key in config.article) {
                     config.article[results.newKey] = results._this;
 
                     //将新的邮件写入缓存
-                    fs.writeFile(cachePath, JSON.stringify(config,null,'    '), function(err) {
+                    fs.writeFile(cachePath, JSON.stringify(config, null, '    '), function(err) {
 
                         if (err) {
                             console.log(err);
@@ -148,7 +155,7 @@ function sendMail(subject, html) {
 
     smtpTransport.sendMail(mailOptions, function(error, response) {
         if (error) {
-            console.log("error:"+error);
+            console.log("error:" + error);
         } else {
             console.log(response);
         }
@@ -194,7 +201,6 @@ function unq(arr1, arr2) {
  * 补全链接地址
  * @param {String} url：发送的主题
  */
-
 function completionLink(url, objectUrl) {
     var oldUrl = urlModel.parse(url)
     var urlParse = urlModel.parse(objectUrl);
