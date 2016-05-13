@@ -106,7 +106,7 @@ for (key in config.article) {
                     //如果有的文章中没有src属性要自行替换
                     if ($("img")) {
                         $("img").each(function(index, imgItem) {
-                             html = html.replace("data-src","src");
+                            html = html.replace("data-src", "src");
                         })
                     }
 
@@ -147,7 +147,7 @@ for (key in config.article) {
  */
 function sendMail(subject, html) {
     var mailOptions = {
-        from: '趣分期前端组<sys_warning@qufenqi.com>',
+        from: mail.mailfrom,
         to: mail.to,
         subject: subject,
         html: html
