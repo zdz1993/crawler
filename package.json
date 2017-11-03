@@ -1,17 +1,21 @@
 {
   "name": "crawler",
-  "main": "eagle.js",
+  "main": "crawler.js",
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "dev": "npm install"
+    "dev": "npm install",
+    "start": "babel-node js/crawler.js"
   },
   "dependencies": {
     "async": "^1.5.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "cheerio": "0.20.0",
-    "mongoose": "3.8.x",
     "nodemailer": "^2.3.0",
-    "request": "^2.69.0",
-    "co":"^4.0.0"
+    "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "babel-preset-stage-1": "^6.24.1"
   }
 }
