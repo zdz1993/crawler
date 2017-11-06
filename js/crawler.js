@@ -35,7 +35,7 @@ async function init (url, itemData, key) {
     subject: 'FE_文章推荐',
     html: totalHtml
   }
-  // sendmail(options)
+  sendmail(options)
 
   // 重写config.json文件
   for (let i = 0; i < list.length; i++) {

@@ -17,7 +17,6 @@
             "contentElementNode": ".entry-content",
             "titleElementNode": "table.files .content a",
             "articalList": [
-                "0102.md",
                 "0109.md",
                 "0116.md",
                 "0123.md",
@@ -61,7 +60,8 @@
                 "1016.md",
                 "1023.md",
                 "1030.md",
-                "excellent.md"
+                "excellent.md",
+                "0102.md"
             ]
         },
         "jsTips": {
@@ -69,7 +69,6 @@
             "contentElementNode": ".page-content",
             "titleElementNode": ".post-list a.post-link",
             "articalList": [
-                "Vuejs在資料綁定時會複製更新並替換目標元素",
                 "选择（picking）和反选（rejecting）对象的属性",
                 "为什么你应该在相等比较中使用 Object.is()",
                 "使用 tap 来快速 debug",
@@ -136,7 +135,8 @@
                 "优化嵌套的条件语句",
                 "子容器的Key是很重要的",
                 "AngularJs - $digest vs $apply",
-                "向数组中插入元素"
+                "向数组中插入元素",
+                "Vuejs在資料綁定時會複製更新並替換目標元素"
             ]
         }
     }
