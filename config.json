@@ -1,15 +1,15 @@
 {
     "mailoption": {
         "from": {
-            "host": "smtp.163.com",
+            "host": "*****",
             "port": 25,
             "auth": {
-                "user": "zdzwda@163.com",
-                "pass": "56531056dezhi"
+                "user": "****",
+                "pass": "*****"
             }
         },
-        "to": "zhangdezhi@iwaimai.baidu.com",
-        "mailfrom": "zdzwda<zdzwda@163.com>"
+        "to": "*******",
+        "mailfrom": "********"
     },
     "article": {
         "fex": {
